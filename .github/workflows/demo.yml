@@ -12,7 +12,7 @@ jobs:
 
     - name: Build and Deploy
       uses: actions/setup-node@v2
-      width: 
+      with: 
         node: 14.20
 
     - name: npm install

@@ -11,9 +11,20 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      uses: actions/setup-node@v1
-      env:
-        ACCESS_TOKEN: ${{ secrets.SECRET }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: node app.js
+      uses: actions/setup-node@v2
+      width: 
+        node: 14.20
+
+    - name: npm install
+      run: |
+        npm run install
+
+    - name: npm build
+      run: |
+        npm run build
+
+    - name: deploy
+      uses: JamesIves/github-pages-deploy-action@v4.2.3
+      with:
+        branch: gh-pages
+        folder: build
